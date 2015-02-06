@@ -1,0 +1,5 @@
+---
+- name: Configure application support
+  hosts: [ default ]
+  roles:
+    - steamcmd
