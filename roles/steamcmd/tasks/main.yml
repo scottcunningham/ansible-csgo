@@ -1,9 +1,5 @@
 ---
 
-- name:       Update APT package cache
-  sudo:       yes
-  apt:        update_cache=yes
-
 - name:       Install packages
   sudo:       yes
   apt:        pkg={{ item }} state=installed
@@ -13,21 +9,21 @@
 - name:       Download SteamCMD
   get_url:
      url:  http://media.steampowered.com/installer/steamcmd_linux.tar.gz
-     dest: /home/{{ user }}/steamcmd_linux.tar.gz
+     dest: "{{ install_dir }}/steamcmd_linux.tar.gz"
 
 - file:
-    path:  /home/{{ user }}/steamcmd
+    path:  "{{ install_dir }}/steamcmd"
     state: directory
 
 - unarchive:
-     src:  /home/{{ user }}/steamcmd_linux.tar.gz
-     dest: /home/{{ user }}/steamcmd/
+     src:  "{{ install_dir }}/steamcmd_linux.tar.gz"
+     dest: "{{ install_dir }}/steamcmd/"
      copy: no
 
 - template:
     src:  update-cs-go.j2
-    dest: /home/{{ user }}/steamcmd/update-cs-go
+    dest: "{{ install_dir }}/steamcmd/update-cs-go"
 
-- command: ./steamcmd.sh +runscript /home/{{ user }}/steamcmd/update-cs-go
+- command: ./steamcmd.sh +runscript {{ install_dir }}/steamcmd/update-cs-go
   args:
-     chdir: /home/{{ user }}/steamcmd/
+     chdir: "{{ install_dir }}/steamcmd/"
