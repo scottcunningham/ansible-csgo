@@ -1,0 +1,18 @@
+---
+# Install packages
+- include: packages.yml
+
+# Create user
+- include: user.yml
+
+# Download steamcmd binaries
+- include: download-steamcmd.yml
+
+# Copy utility scripts
+- include: scripts.yml
+
+# Update/install app
+- include: update-steam-app.yml
+
+# Start app service
+- include: service.yml

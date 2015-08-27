@@ -1,0 +1,9 @@
+---
+- name: Create service directory
+  file: path="/etc/service.d/{{ steam_app_name }}" state=directory
+
+- name: Add service runfile
+  template: src=runfile.j2 dest="/etc/service.d/{{ steam_app_name }}" mode=0755
+
+- name: Start service
+  svc: name="{{ steam_app_name }}" service_dir=/etc/service service_src=/etc/service.d state=restarted

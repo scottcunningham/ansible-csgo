@@ -1,0 +1,6 @@
+---
+- name: Install packages
+  become: true
+  become_user: root
+  apt: name="{{ item }}" state=installed
+  with_items: "{{ steam_required_packages }}"

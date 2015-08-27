@@ -1,7 +1,6 @@
 ---
 - name: Configure application support
+  become: true
   hosts: all
-  vars:
-    - install_dir: "/opt/csgo-server"
   roles:
-    - steamcmd
+    - steam_server

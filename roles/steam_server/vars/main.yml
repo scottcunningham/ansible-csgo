@@ -1,0 +1,20 @@
+---
+steam_app_name: cs_go
+steam_app_id: 740
+
+steam_required_packages:
+  - lib32gcc1
+  - daemontools
+  - daemontools-run
+
+steam_user_name: steam
+steam_user_home_path: "/var/lib/{{ steam_user_name }}"
+
+steamcmd_archive_url: "http://media.steampowered.com/installer/steamcmd_linux.tar.gz"
+steamcmd_install_directory: "{{ steam_user_home_path }}/steamcmd"
+steamcmd_archive_temp_path: "{{ steamcmd_install_directory }}-tmp.tgz"
+
+steam_server_update_steam_script_path: "{{ steam_user_home_path }}/update-{{ steam_app_name }}"
+steam_server_update_shell_script_path: "{{ steam_server_update_steam_script_path }}.sh"
+
+steam_server_log_path: "{{ steam_user_home_path }}/server.log"

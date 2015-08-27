@@ -1,0 +1,3 @@
+---
+- name: Create steam app user
+  user: name="{{ steam_user_name }}" home="{{ steam_user_home_path }}"

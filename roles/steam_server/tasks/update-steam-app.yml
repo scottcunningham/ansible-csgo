@@ -1,0 +1,5 @@
+---
+- name: Update steam app
+  command: "{{ steam_server_update_shell_script_path }}"
+  become: true
+  become_user: "{{ steam_user_name }}"

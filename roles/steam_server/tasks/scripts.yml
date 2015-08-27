@@ -1,0 +1,6 @@
+---
+- name: Template steam app update script
+  template: src=update_steam_app.j2 dest="{{ steam_server_update_steam_script_path }}" owner="{{ steam_user_name }}"
+
+- name: Template steam app update shell script
+  template: src=update_steam_app.sh.j2 dest="{{ steam_server_update_shell_script_path }}" mode=0700 owner="{{ steam_user_name  }}"

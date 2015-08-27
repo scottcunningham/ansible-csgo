@@ -1,0 +1,14 @@
+---
+- name: Download steamcmd archive
+  get_url: url="{{ steamcmd_archive_url }}" dest="{{ steamcmd_archive_temp_path }}"
+
+- name: Create steamcmd directory
+  file: path="{{ steamcmd_install_directory }}" mode=0700 owner="{{ steam_user_name }}" state=directory
+
+- name: Extract steamcmd
+  unarchive: src="{{ steamcmd_archive_temp_path }}" dest="{{ steamcmd_install_directory }}" copy=no
+  become: true
+  become_user: "{{ steam_user_name }}"
+
+- name: Remove tempfile
+  file: path="{{ steamcmd_archive_temp_path }}" state=absent
